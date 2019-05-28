@@ -71,7 +71,7 @@ $f3->route('GET|POST /personal', function ($f3)
             $_SESSION['age'] = $age;
             $_SESSION['phone'] = $phone;
             if (empty($gender)) {
-                $_SESSION['gender'] = "No gender selected";
+                $_SESSION['gender'] = "Please select a gender";
             } else {
                 $_SESSION['gender'] = $gender;
             }
@@ -105,6 +105,7 @@ $f3->route('GET|POST /profile', function ($f3)
         $state = $_POST['state'];
         $bio = $_POST['bio'];
         $seeking = $_POST['seeking'];
+
         //Add data to hive
         $f3->set('email', $email);
         $f3->set('state', $state);
@@ -117,14 +118,14 @@ $f3->route('GET|POST /profile', function ($f3)
             $_SESSION['email'] = $email;
             $_SESSION['state'] = $state;
             if (empty($bio)) {
-                $_SESSION['bio'] = "No biography";
+                $_SESSION['bio'] = "No biography added ";
             }
             else {
                 $_SESSION['bio'] = $bio;
             }
 
             if (empty($seeking)) {
-                $_SESSION['seeking'] = "Not seeking any";
+                $_SESSION['seeking'] = "No seeking selected";
             }
             else {
                 $_SESSION['seeking'] = $seeking;
