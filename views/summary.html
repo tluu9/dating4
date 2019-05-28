@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Dating Website</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+        <link rel="stylesheet" href="styles/style.css">
+
+</head>
+<body>
+<h3>My Dating Website <a href="admin">Admin</a></h3>
+
+    <div class="container-fluid">
+    <div class="row content">
+        <div class="col-sm-6">
+            <table class="table table-bordered">
+            <tbody>
+                <tr>
+                <td>Name: {{$_SESSION['member']->getFname() }} {{$_SESSION['member']->getLname() }}</td>
+                </tr>
+                <tr>
+                <td>Gender: {{$_SESSION['member']->getGender() }}</td>
+                </tr>
+                <tr>
+                <td>Age: {{$_SESSION['member']->getAge() }}</td>
+                </tr>
+                <tr>
+                <td>Phone: {{$_SESSION['member']->getPhone() }}</td>
+                </tr>
+                <tr>
+                <td>Email: {{$_SESSION['member']->getEmail() }}</td>
+                </tr>
+                <tr>
+                <td>State: {{$_SESSION['member']->getState() }}</td>
+                </tr>
+                <tr>
+                <td>Seeking: {{$_SESSION['member']->getSeeking() }}</td>
+                </tr>
+                <tr>
+                <check if="{{$_SESSION['member'] instanceOf PremiumMember}}">
+                <check if="{{!empty($_SESSION['member']->getOutDoorInterests()) &&
+                                    !empty($_SESSION['member']->getInDoorInterests())}}">
+                <true><td>Interests: {{implode(', ', $_SESSION['member']->getInDoorInterests() )}},
+                                            {{implode(', ', $_SESSION['member']->getOutDoorInterests()) }}</td></true>
+                <false><td>Interests: No interests selected</td></false>
+                                            </check> </check>
+                </tr>
+
+           </tbody>
+           </table>
+        </div>
+
+        <div class="col-sm-6">
+            <div class="text-center">
+                <img class="center" src="images/avatar.png" width="300" height="300" alt="profile picture">
+            </div>
+            <center><h4>Biography</h4></center>
+            <p class="text-center">{{$_SESSION['bio']}}</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12 text-center">
+            <button class="btn btn-primary bottomMargin">Contact Me!</button>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
